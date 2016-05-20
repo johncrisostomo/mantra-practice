@@ -4,9 +4,10 @@ import StuffComponent from '../components/stuffcomponent.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-  if (Meteor.subscribe('stuffs').ready()) {
+  if (Meteor.subscribe('stuffs').ready() && Meteor.subscribe('categories').ready()) {
     const stuff = Collections.Stuff.find().fetch(); 
-    onData(null, {stuff});
+    const categories = Collections.Categories.find().fetch();
+    onData(null, {stuff, categories});
   }
 
 };
