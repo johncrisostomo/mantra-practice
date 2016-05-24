@@ -13,6 +13,12 @@ class Stuffcomponent extends React.Component {
     this.setState({filter: newFilter}); 
   }
 
+  emailHandler(e) {
+    e.preventDefault();
+    console.log(this.props);
+    this.props.sendEmail();
+  }
+
   render() {
     let categories = this.props.categories.map((category) => {
       return <option>{category.name}</option>
@@ -22,6 +28,7 @@ class Stuffcomponent extends React.Component {
 
     return (
       <div>
+        <a href="#" onClick={this.emailHandler.bind(this)}>Send email</a>
         <div className="container">
         <h2 style={{"display":"inline" }}>Filter by : </h2>
         <select style={{"width": 200, "display":"inline"}} className="form-control" ref="filterDropDown"  onChange={this.updateFilter.bind(this)}>
@@ -34,7 +41,6 @@ class Stuffcomponent extends React.Component {
           stuff={this.props.stuff} 
           categories={this.props.categories}
           filter={this.state.filter}
-          FilterHandler={this.updateFilter}
         />
       </div>
     );

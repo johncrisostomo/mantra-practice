@@ -15,6 +15,17 @@ export default function () {
       check(title, String);
       check(data, String);
       Stuff.insert({title, data});
+    },
+    'sendEmail'() {
+      this.unblock();
+
+      Email.send({
+        to: "jd@snapzio.com",
+        from: "admin@welcomeshop.com",
+        subject: "Welcome to Welcome Shop",
+        text: "This is a sample email sent to check MAIL_URL"
+      });
+      console.log('sent email!');
     }
   });
 }

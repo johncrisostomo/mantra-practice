@@ -13,6 +13,7 @@ export const composer = ({context}, onData) => {
 };
 
 export const depsMapper = (context, actions) => ({
+  sendEmail: actions.stuff.sendEmail,
   edit: actions.stuff.edit,
   context: () => context
 });
